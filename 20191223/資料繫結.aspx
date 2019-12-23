@@ -17,6 +17,16 @@
         <asp:CheckBoxList ID="CheckBoxList1" runat="server" RepeatDirection="Horizontal">
         </asp:CheckBoxList>
     
+        <br />
+        <asp:GridView ID="GridView1" runat="server" OnRowEditing="RowEditeing" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating">
+            <Columns>
+                <asp:CommandField ShowEditButton="True" />
+                <asp:CommandField ShowSelectButton="True" />
+                <asp:CommandField ShowDeleteButton="True" />
+            </Columns>
+        </asp:GridView>
+        <br />
+    
     </div>
     </form>
 </body>
