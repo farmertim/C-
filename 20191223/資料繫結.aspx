@@ -18,7 +18,7 @@
         </asp:CheckBoxList>
     
         <br />
-        <asp:GridView ID="GridView1" runat="server" OnRowEditing="RowEditeing" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating">
+        <asp:GridView ID="GridView1" runat="server" OnRowEditing="RowEditeing" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:CommandField ShowSelectButton="True" />
