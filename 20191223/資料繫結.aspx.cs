@@ -83,7 +83,7 @@ public partial class 資料繫結 : System.Web.UI.Page
 
     protected void RowEditeing(object sender, GridViewEditEventArgs e)
     {
-        GridView1.EditIndex = e.NewEditIndex;
+       GridView1.EditIndex = e.NewEditIndex;
         db();
     }
 

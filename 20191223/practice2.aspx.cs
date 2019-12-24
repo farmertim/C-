@@ -18,10 +18,7 @@ public partial class practice2 : System.Web.UI.Page
             ad.Fill(ds, "products");
             ad1.Fill(ds, "suppliers");
           
-            DataTable dt = new DataTable();
-            DataTable dt1 = new DataTable();
-            ad.Fill(dt);
-            ad1.Fill(dt1);
+       
             DropDownList1.DataSource = ds.Tables["suppliers"];
             DropDownList1.DataTextField = ds.Tables["Suppliers"].Columns["CompanyName"].ToString();
             DropDownList1.DataValueField = ds.Tables["Suppliers"].Columns["SupplierID"].ToString();
@@ -41,7 +38,7 @@ public partial class practice2 : System.Web.UI.Page
             try
             {
                 ad.InsertCommand = new SqlCommand("Insert into Products (ProductName,UnitPrice,Discontinued) values(@com,@id,@dis)", co);
-                ad.InsertCommand.Parameters.Add("@com", SqlDbType.NVarChar, 40).Value ="12121fe";
+                ad.InsertCommand.Parameters.Add("@com", SqlDbType.NVarChar, 40).Value =TextBox1.Text;
                 ad.InsertCommand.Parameters.Add("@id", SqlDbType.Money, 10).Value = 999;
                 ad.InsertCommand.Parameters.Add("@dis", SqlDbType.Bit, 10).Value =0;
                 int row = ad.InsertCommand.ExecuteNonQuery();
