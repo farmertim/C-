@@ -10,27 +10,22 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:GridView ID="GridView1" runat="server" CellPadding="4" ForeColor="#333333" GridLines="None">
-            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
-            <EditRowStyle BackColor="#999999" />
-            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
-            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
-            <SortedAscendingCellStyle BackColor="#E9E7E2" />
-            <SortedAscendingHeaderStyle BackColor="#506C8C" />
-            <SortedDescendingCellStyle BackColor="#FFFDF8" />
-            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
-        </asp:GridView>
-        CategoryName:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        OrderId:<asp:DropDownList ID="DropDownList1" runat="server">
+        </asp:DropDownList>
         <br />
-        Description:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        ProductID:<asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+        </asp:DropDownList>
         <br />
-        Picture:<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        UnitPrice:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <br />
+        Quanity:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <br />
+        Discount:<asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
         <br />
         <asp:Button ID="Button1" runat="server" Height="27px" OnClick="Button1_Click" Text="新增" />
+        <br />
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
         <br />
     
     </div>
