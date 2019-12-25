@@ -24,7 +24,7 @@
         <br />
         <asp:Button ID="Button1" runat="server" Height="27px" OnClick="Button1_Click" Text="新增" />
         <br />
-        <asp:GridView ID="GridView1" runat="server">
+        <asp:GridView ID="GridView1" runat="server" AllowPaging="True" OnPageIndexChanging="GridView1_PageIndexChanging" PageSize="3">
         </asp:GridView>
         <br />
     

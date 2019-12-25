@@ -27,11 +27,12 @@ public partial class practice3 : System.Web.UI.Page
                 co.Open();
                 SqlDataAdapter ad = new SqlDataAdapter("select * from Products", co);
                 SqlDataAdapter ad1 = new SqlDataAdapter("select * from Orders", co);
+                SqlDataAdapter ad2 = new SqlDataAdapter("select * from [Order Details]", co);
 
                 DataSet ds = new DataSet();
                 ad.Fill(ds, "products");
                 ad1.Fill(ds, "orders");
-
+                ad2.Fill(ds, "o");
                 DropDownList1.DataSource = ds.Tables["orders"];
                 DropDownList1.DataTextField = ds.Tables["orders"].Columns["OrderID"].ToString();
                 DropDownList1.DataValueField = ds.Tables["orders"].Columns["OrderID"].ToString();
@@ -41,6 +42,10 @@ public partial class practice3 : System.Web.UI.Page
                 DropDownList2.DataTextField = ds.Tables["products"].Columns["ProductID"].ToString();
                 DropDownList2.DataValueField = ds.Tables["products"].Columns["ProductID"].ToString();
                 DropDownList2.DataBind();
+
+                GridView1.DataSource =ds.Tables["o"];
+
+                GridView1.DataBind();
 
             }
         }
@@ -76,7 +81,7 @@ public partial class practice3 : System.Web.UI.Page
                 ad1.InsertCommand.Parameters.Add("@up", SqlDbType.Money, 10).Value =Convert.ToDouble( TextBox1.Text);
                 ad1.InsertCommand.Parameters.Add("@Q", SqlDbType.SmallInt, 10).Value =Convert.ToInt16( TextBox2.Text);
                 ad1.InsertCommand.Parameters.Add("@dt", SqlDbType.Real, 10).Value =Convert.ToDouble( TextBox3.Text);
-                ad1.InsertCommand.ExecuteNonQuery();
+               // ad1.InsertCommand.ExecuteNonQuery();
                 ad1.Update(ds1, "order");
                
 
@@ -89,6 +94,7 @@ public partial class practice3 : System.Web.UI.Page
                 dr["Quantity"] = TextBox2.Text;
                 dr["Discount"] = TextBox3.Text;
                 ds1.Tables["order"].Rows.Add(dr);
+                
                 GridView1.DataSource = ds1.Tables["order"];
 
                 GridView1.DataBind();
@@ -116,5 +122,11 @@ public partial class practice3 : System.Web.UI.Page
 
 
         }
+    }
+
+    protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+
     }
 }
