@@ -13,79 +13,49 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
         <br />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <asp:Timer ID="Timer1" runat="server" Interval="3000" OnTick="Timer1_Tick">
-                </asp:Timer>
-                <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-                    <ContentTemplate>
-                        <asp:Timer ID="Timer2" runat="server" Interval="1000" OnTick="Timer2_Tick">
-                        </asp:Timer>
-                        <asp:Label ID="Label2" runat="server" Text="0"></asp:Label>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
-                <br />
-                <asp:Label ID="Label1" runat="server" Text="0"></asp:Label>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-        <br />
-        <br />
-        <asp:UpdatePanel ID="UpdatePanel3" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <asp:Timer ID="Timer3" runat="server" Interval="3000" OnTick="Timer3_Tick">
-                </asp:Timer>
-                <asp:Label ID="Label3" runat="server" Text="0"></asp:Label>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-        <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource1" DataTextField="姓名" DataValueField="Id">
-        </asp:DropDownList>
-        <br />
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:運動與飲食紀錄ConnectionString %>" SelectCommand="SELECT * FROM [客戶資料]"></asp:SqlDataSource>
-        <br />
-        <asp:UpdatePanel ID="UpdatePanel4" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
-                <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="SqlDataSource2">
-                    <Columns>
-                        <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
-                        <asp:BoundField DataField="姓名" HeaderText="姓名" SortExpression="姓名" />
-                        <asp:BoundField DataField="帳號" HeaderText="帳號" SortExpression="帳號" />
-                        <asp:BoundField DataField="密碼" HeaderText="密碼" SortExpression="密碼" />
-                    </Columns>
-                </asp:GridView>
-                <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:運動與飲食紀錄ConnectionString %>" SelectCommand="SELECT * FROM [客戶資料] WHERE ([Id] = @Id)">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="DropDownList1" Name="Id" PropertyName="SelectedValue" Type="Int32" />
-                    </SelectParameters>
-                </asp:SqlDataSource>
-                <br />
-            </ContentTemplate>
-            <Triggers>
-                <asp:AsyncPostBackTrigger ControlID="DropDownList1" EventName="SelectedIndexChanged" />
-            </Triggers>
-        </asp:UpdatePanel>
         <asp:Image ID="Image1" runat="server" Height="65px" ImageUrl="~/下載 (1).jpg" Width="496px" />
         <br />
         <asp:UpdatePanel ID="UpdatePanel6" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
+                 <asp:Timer ID="Timer1" runat="server" Interval="1000">
+                 </asp:Timer>
                  <br />
-        現在時間:<asp:Label ID="Label5" runat="server"></asp:Label>
-        <br /><br /><asp:Timer ID="Timer4" runat="server" Interval="1000" OnTick="Timer4_Tick">
-        </asp:Timer>
+        現在時間:<%= DateTime.Now.ToLongTimeString() %>
+               
+      
             </ContentTemplate>
         </asp:UpdatePanel>
         
         <br />
         歡迎光臨<br />
-       
-        <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
-            <ContentTemplate>
+        <br />
                 姓名:<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
 <br />
                 電話:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
                 <br />
-                訂位時間:<asp:TextBox ID="TextBox3" runat="server" TextMode="Date"></asp:TextBox>
                 <br />
-                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                用餐時間:<asp:DropDownList ID="DropDownList3" runat="server">
+            <asp:ListItem>星期一</asp:ListItem>
+            <asp:ListItem>星期二</asp:ListItem>
+            <asp:ListItem>星期</asp:ListItem>
+            <asp:ListItem>星期四</asp:ListItem>
+            <asp:ListItem>星期五</asp:ListItem>
+        </asp:DropDownList>
+        <asp:DropDownList ID="DropDownList4" runat="server">
+            <asp:ListItem>10時</asp:ListItem>
+            <asp:ListItem>11時</asp:ListItem>
+            <asp:ListItem>12時</asp:ListItem>
+        </asp:DropDownList>
+        <br />
+                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="定位" />
+                <br />
+        <br />
+       
+        <asp:UpdatePanel ID="UpdatePanel5" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                現在時間:<%= DateTime.Now.ToLongTimeString() %>
+                <br />
                 <br />
                 <asp:Label ID="Label4" runat="server"></asp:Label>
             </ContentTemplate>
@@ -94,6 +64,28 @@
             </Triggers>
         </asp:UpdatePanel>
         <br />
+        套餐:<asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:ListItem>三明治</asp:ListItem>
+            <asp:ListItem>漢堡</asp:ListItem>
+        </asp:DropDownList>
+&nbsp; 飲料:<asp:DropDownList ID="DropDownList2" runat="server">
+            <asp:ListItem>汽水</asp:ListItem>
+            <asp:ListItem>可樂</asp:ListItem>
+        </asp:DropDownList>
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="訂餐" />
+        <br />
+        <br />
+        <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+                現在時間:<%= DateTime.Now.ToLongTimeString() %>
+                <br />
+                <br />
+                <asp:Label ID="Label6" runat="server"></asp:Label>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
+            </Triggers>
+        </asp:UpdatePanel>
         <br />
     
     </div>
