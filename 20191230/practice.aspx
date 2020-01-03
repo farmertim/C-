@@ -61,10 +61,7 @@
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="Button1" EventName="Click" />
-            </Triggers>
-        </asp:UpdatePanel>
-        <br />
-        套餐:<asp:DropDownList ID="DropDownList1" runat="server">
+            </Triggers>套餐:<asp:DropDownList ID="DropDownList1" runat="server">
             <asp:ListItem>三明治</asp:ListItem>
             <asp:ListItem>漢堡</asp:ListItem>
         </asp:DropDownList>
@@ -77,10 +74,7 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel7" runat="server" UpdateMode="Conditional">
             <ContentTemplate>
-                現在時間:<%= DateTime.Now.ToLongTimeString() %>
-                <br />
-                <br />
-                <asp:Label ID="Label6" runat="server"></asp:Label>
+                現在時間:<%= DateTime.Now.ToLongTimeString() %><br /><br /><asp:Label ID="Label6" runat="server"></asp:Label>
             </ContentTemplate>
             <Triggers>
                 <asp:AsyncPostBackTrigger ControlID="Button2" EventName="Click" />
